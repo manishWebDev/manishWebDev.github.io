@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Manish Front End Developer</title>
+    <link rel="icon" href="img-M.png" type="image/icon type">
+
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+      
+      :root {  
+  --purple: rgb(123, 31, 162);
+  --violet: rgb(103, 58, 183);
+  --pink: rgb(244, 143, 177);
+}  
+      
+      body {
+  background-color: rgb(10, 10, 10);
+  height: 100vh;  
+  margin: 0px;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+  overflow: hidden;
+}
+.fade-out {
+  opacity: 0;
+}
+body.fade-in {
+          opacity: 1;
+       }
+#preloader {
+  background-color: rgb(8, 24, 46);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+}   
+.toggle-wrapper {
+	flex: 1 1 calc(100% / 3);
+	min-height: 50vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	position: relative;
+}
+.toggle {
+			transform: translate(-40px, 40px);
+		}
+        .name {
+	width: 80%;
+	position: absolute;
+	font: 500 14px 'Rubik', sans-serif;
+	letter-spacing: .5px;
+	text-transform: uppercase;
+	text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+	bottom: 15px;
+	right: 15px;
+	text-align: right;
+}
+.toggle {
+	position: relative;
+	display: inline-block;
+}
+label.toggle-item {
+  width: 7em;
+  background: #2e394d;
+  height: 3em;
+  display: inline-block;
+  border-radius: 50px;
+  margin: 40px;
+  position: relative;
+  transition: all 0.3s ease;
+  transform-origin: 20% center;
+  cursor: pointer;
+}
+
+label.toggle-item::after {
+  content: "";
+  /* font-size: 2.35em; */
+  height: 2.3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: block;
+  position: absolute;
+  width: 2.3em;
+  top: 0.25em;
+  left: 0.25em;
+  border-radius: 2em;
+  border: 2px solid #88cf8f;
+  transform: translateX(-67px);
+   transform: rotate(-190deg);
+  /* transition: 0.6s ease-in-out 0.2s; */
+  transition: 0.6s cubic-bezier(0.07,-0.14, 0.14, 1.34) 0.2s;
+  
+}
+#gravity {
+    appearance: none;
+}
+#gravity:checked + label {
+  transform: rotate(90deg);
+}
+#gravity:checked ~ label::after {
+  transform: translateX(67px);
+  background-color: #88cf8f;
+  transition-delay: 0.2s;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' stroke='%23000' stroke-width='10' fill='%23fff'/%3E%3Ccircle cx='30' cy='40' r='10' stroke='%23000' stroke-width='5' fill='%23fff'/%3E%3Ccircle cx='70' cy='40' r='10' stroke='%23000' stroke-width='5' fill='%23fff'/%3E%3Cpath d='M 20 60 Q 50 85 80 60' stroke='%23000' stroke-width='10' fill='none'/%3E%3C/svg%3E");
+  background-size: 50%;
+ 
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+  /* transition: 0.6s cubic-bezier(0.895, 0.03, 0.685, 0.22) 0.2s; */
+}
+#gallery {
+  height: 140vmax;
+  width: 140vmax;  
+  position: absolute;
+}
+
+.tile {
+  border-radius: 1vmax;
+  position: absolute;
+  transition: transform 800ms ease;
+}
+
+.tile:hover {
+  transform: scale(1.1);
+}
+
+.tile:hover > img {
+  opacity: 1;
+  transform: scale(1.01);
+}
+
+.tile > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 800ms ease,
+    transform 800ms ease;
+}
+
+.tile:nth-child(1) {
+  background-color: rgb(255, 238, 88);
+  height: 14%;
+  width: 20%;
+  left: 5%;
+  top: 5%;
+}
+
+.tile:nth-child(2) {
+  background-color: rgb(66, 165, 245);
+  height: 24%;
+  width: 14%;
+  left: 42%;
+  top: 12%;
+}
+
+.tile:nth-child(3) {
+  background-color: rgb(99, 26, 235);
+  height: 18%;
+  width: 16%;
+  left: 12%;
+  top: 34%;
+}
+
+.tile:nth-child(4) {
+  background-color: #a64092;
+  height: 14%;
+  width: 12%;
+  left: 45%;
+  top: 48%;
+}
+
+.tile:nth-child(5) {
+  background-color: rgb(171, 71, 188);
+  height: 16%;
+  width: 32%;
+  left: 8%;
+  top: 70%;
+}
+
+.tile:nth-child(6) {
+  background-color: rgb(255, 167, 38);
+  height: 24%;
+  width: 24%;
+  left: 68%;
+  top: 8%;
+}
+
+.tile:nth-child(7) {
+  background-color: rgb(63, 81, 181);
+  height: 16%;
+  width: 20%;
+  left: 50%;
+  top: 74%;
+}
+
+.tile:nth-child(8) {
+  background-color: rgb(141, 110, 99);
+  height: 24%;
+  width: 18%;
+  left: 72%;
+  top: 42%;
+}
+
+.tile:nth-child(9) {
+  background-color: rgb(250, 250, 250);
+  height: 10%;
+  width: 8%;
+  left: 84%;
+  top: 84%;
+}
+
+.tile-text {
+  font-family: 'Roboto Mono', monospace;
+  display: none;
+  color: #fff;
+  font-size: 2vmax;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-18%);
+  width: 100%;
+  z-index: 100;
+  transition: display 0.4s ease-in-out;
+}
+.dev {
+  animation: background-pan 3s linear infinite;
+  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  white-space: nowrap;
+}
+@keyframes background-pan {
+  from {
+    background-position: 0% center;
+  }
+  
+  to {
+    background-position: -200% center;
+  }
+}
+@keyframes scale {
+  from, to {
+    transform: scale(0);
+  }
+  
+  50% {
+    transform: scale(1);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  
+  to {
+    transform: rotate(180deg);
+  }
+}
+ .magic > .magic-star,
+ .m2 {
+  --size: clamp(20px, 1.5vw, 30px);
+  
+  animation: scale 700ms ease forwards;
+  display: block;
+  height: var(--size);
+  left: var(--star-left);
+  position: absolute;
+  top: var(--star-top);
+  width: var(--size);
+}
+
+ .magic > .magic-star > svg {
+  animation: rotate 1000ms linear infinite;
+  display: block;
+  opacity: 0.7;
+}
+ .m2> svg {
+  animation: rotate 1000ms linear infinite;
+  display: block;
+  opacity: 0.7;
+}
+
+ .magic > .magic-star > svg > path {
+  fill: #4158D0;
+
+}
+ .m2 > svg > path {
+  fill: #0093E9;
+}
+ .m3 > svg > path {
+  fill: #80D0C7 !important;
+}
+ .m4 > svg > path {
+  fill: orangered !important;
+}
+ .m7 > svg > path {
+  fill: rgba(249,143,253,1) !important;
+}
+ .m9 > svg > path {
+  fill: rgba(93,52,236,1) !important;
+}
+ .m10 > svg > path {
+  fill: rgba(23,25,95,1) !important;
+}
+ .magic {
+  display: inline-block;
+  position: relative;
+}
+.t1:hover .text1{
+  display: block;
+}
+.t2:hover .text2{
+  display: block;
+}
+.t3:hover .text3{
+  display: block;
+}
+.t4:hover .text4{
+  display: block;
+}
+.t5:hover .text5{
+  display: block;
+}
+.t6:hover .text6{
+  display: block;
+}
+.t7:hover .text7{
+  display: block;
+}
+.t8:hover .text8{
+  display: block;
+}
+.t9:hover .text9{
+  display: block;
+}
+.chess {
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%) !important;
+}
+.math {
+  background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%) !important;
+}
+.gaming {
+  background-image: linear-gradient(62deg, cyan 0%, lightgreen 50%, orange 100%) !important;
+}
+.sketching {
+  background-image: radial-gradient( circle farthest-corner at 12.3% 19.3%,  rgba(85,88,218,1) 0%, rgba(95,209,249,1) 100.2% ) !important;
+}
+.travelling {
+  background-image: linear-gradient( 109.6deg,  rgba(253,199,141,1) 11.3%, rgba(249,143,253,1) 100.2% ) !important;
+}
+.fifteen {
+  background-image: linear-gradient( 109.6deg,  rgba(156,252,248,1) 11.2%, rgba(110,123,251,1) 91.1% ) !important;
+}
+.coffee {
+  background-image: linear-gradient( 109.6deg,  rgba(62,161,219,1) 11.2%, rgba(93,52,236,1) 100.2% ) !important;
+}
+.thatAll {
+  background-image: linear-gradient( 65.5deg,  rgba(23,205,205,1) -15.1%, rgba(23,25,95,1) 71.5% ) !important;
+  font-size: 1.6rem !important;
+}
+.smile {
+  margin-top: 10px;
+  font-family: .4rem;
+}
+.content.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+}
+.fade-out {
+  opacity: 1;
+  animation: fadeOut 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+    </style>
+    
+</head>
+<body>
+  <div id="preloader">
+    <div class="toggle-wrapper">
+        <div class="toggle"><input id="gravity" type="checkbox" /><label class="toggle-item" for="gravity"></label></div>
+   
+    </div>
+  </div>
+<div class="content">
+  <div id="gallery">
+      <div class="tile t1">
+        <h2 class="tile-text text1">I am a <span class="magic">
+          <span class="magic-star">
+            <svg viewBox="0 0 512 512">
+            <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+            </svg>
+          </span>
+          <span class="magic-star">
+            <svg viewBox="0 0 512 512">
+            <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+            </svg>
+          </span>
+          <span class="magic-star">
+            <svg viewBox="0 0 512 512">
+            <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+            </svg>
+          </span><span class="dev">Front-End Web Developer</span></span></h2>
+        <img src="coding-about.jpg" />
+      </div>
+      <div class="tile t2">
+        <h2 class="tile-text text2">I am also a <span class="magic">
+          <span class="magic-star m3">
+            <svg viewBox="0 0 512 512">
+            <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+            </svg>
+          </span>
+          <span class="magic-star m3">
+            <svg viewBox="0 0 512 512">
+            <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+            </svg>
+          </span>
+          <span class="magic-star m3">
+            <svg viewBox="0 0 512 512">
+            <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+            </svg>
+          </span><span class="dev chess">Chess Player.</span></h2>
+        <img src="chess-about.jpg" />
+      </div>
+      <div class="tile t3">
+        <h2 class="tile-text text3">
+            I am interested in<span class="magic">
+            <svg viewBox="0 0 512 512">
+            <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+            </svg>
+          </span>
+          <span class="m2">
+            <svg viewBox="0 0 512 512">
+            <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+            </svg>
+          </span>
+          <span class="m2">
+            <svg viewBox="0 0 512 512">
+            <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+            </svg></span><span class="dev math">Maths and Physics.</span>
+        </h2>
+          
+        <img src="physics-maths-about.webp" />
+      </div>
+      <div class="tile t4">
+          <h2 class="tile-text text4"><span class="magic">
+            <span class="magic-star m4">
+              <svg viewBox="0 0 512 512">
+              <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+              </svg>
+            </span>
+            <span class="magic-star m4">
+              <svg viewBox="0 0 512 512">
+              <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+              </svg>
+            </span>
+            <span class="magic-star m4">
+              <svg viewBox="0 0 512 512">
+              <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+              </svg>
+            </span><span class="dev gaming">Gaming.</span>💻</h2>
+        <img src="gaming-about.webp" />
+      </div>
+      <div class="tile t5">
+        <h2 class="tile-text text5"><span class="magic">
+          <span class="magic-star m5">
+            <svg viewBox="0 0 512 512">
+            <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+            </svg>
+          </span>
+          <span class="magic-star m5">
+            <svg viewBox="0 0 512 512">
+            <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+            </svg>
+          </span>
+          <span class="magic-star m5">
+            <svg viewBox="0 0 512 512">
+            <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+            </svg>
+          </span><span class="dev sketching">Sketching.</span></h2>
+        <img src="sketch-about.webp" />
+      </div>
+      <div class="tile t7">
+          <h2 class="tile-text text7"><span class="magic">I am 
+            <span class="magic-star m7">
+              <svg viewBox="0 0 512 512">
+              <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+              </svg>
+            </span>
+            <span class="magic-star m7">
+              <svg viewBox="0 0 512 512">
+              <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+              </svg>
+            </span>
+            <span class="magic-star m7">
+              <svg viewBox="0 0 512 512">
+              <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+              </svg>
+            </span><span class="dev fifteen">15 Years Old.</span></h2>
+        <img src="fifteen-about.webp" />
+      </div>
+      <div class="tile t6">
+        <h2 class="tile-text text6"><span class="magic">
+          <span class="magic-star m7">
+            <svg viewBox="0 0 512 512">
+            <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+            </svg>
+          </span>
+          <span class="magic-star m7">
+            <svg viewBox="0 0 512 512">
+            <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+            </svg>
+          </span>
+          <span class="magic-star m7">
+            <svg viewBox="0 0 512 512">
+            <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+            </svg>
+          </span><span class="dev travelling">Travelling.</span></h2>
+        <img src="travel-about.webp" />
+      </div>
+      <div class="tile t8">
+        <h2 class="tile-text text8">I love 
+          <span class="magic">
+          <span class="magic-star m9">
+            <svg viewBox="0 0 512 512">
+            <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+            </svg>
+          </span>
+          <span class="magic-star m9">
+            <svg viewBox="0 0 512 512">
+            <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+            </svg>
+          </span>
+          <span class="magic-star m9">
+            <svg viewBox="0 0 512 512">
+            <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+            </svg>
+          </span><span class="dev coffee">Coffee.</span></h2>
+        <img src="coffee-about.webp" />
+      </div>
+      <div class="tile t9">
+        <h2 class="tile-text text9"> 
+          <span class="magic">
+          <span class="magic-star m10">
+            <svg viewBox="0 0 512 512">
+            <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+            </svg>
+          </span>
+          <span class="magic-star m10">
+            <svg viewBox="0 0 512 512">
+            <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+            </svg>
+          </span>
+          <span class="magic-star m10">
+            <svg viewBox="0 0 512 512">
+            <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+            </svg>
+          </span><span class="dev thatAll">That's It.</span><span class="smile">🙃</span></h2>
+        <img src="end.webp" />
+      </div>
+    </div>    
+   
+</div>
+
+<script>
+
+function handleGravity() {
+  const preloader = document.querySelector('#preloader');
+  const content = document.querySelector('.content');
+  const toggle = document.querySelector('#gravity');
+  
+  // Add or remove "fade-out" class to preloader and toggle "fade-in" class to content based on toggle state
+  if (toggle.checked) {
+    setTimeout(function() {
+      preloader.classList.add('fade-out');
+      content.classList.add('fade-in');
+      content.style.display = "block";
+      preloader.style.display = "none";
+    }, 1800);
+  } else {
+    preloader.classList.remove('fade-out');
+    content.classList.remove('fade-in');
+    content.style.display = "none";
+    preloader.style.display = "block";
+  }
+}
+
+// Attach handleGravity() function to "change" event of toggle switch
+const toggle = document.querySelector('#gravity');
+toggle.addEventListener('change', handleGravity);
+
+    
+  
+          const gallery = document.getElementById("gallery");
+  
+  window.onmousemove = e => {
+    const mouseX = e.clientX,
+          mouseY = e.clientY;
+    
+    const xDecimal = mouseX / window.innerWidth,
+          yDecimal = mouseY / window.innerHeight;
+    
+    const maxX = gallery.offsetWidth - window.innerWidth,
+          maxY = gallery.offsetHeight - window.innerHeight;
+    
+    const panX = maxX * xDecimal * -1,
+          panY = maxY * yDecimal * -1;
+    
+    gallery.animate({
+      transform: `translate(${panX}px, ${panY}px)`
+    }, {
+      duration: 4000,
+      fill: "forwards",
+      easing: "ease"
+    })
+  }
+  
+  function tile1 () {
+      const tileText = document.getElementsByClassName("tile1-text");
+      tileText.style.display = "block";
+  }
+  function tile1Out () {
+      const tileText = document.getElementsByClassName("tile1-text");
+      tileText.style.display = "none";
+  }
+  let index = 0,
+      interval = 1000;
+  
+  const rand = (min, max) => 
+    Math.floor(Math.random() * (max - min + 1)) + min;
+  
+  const animate = star => {
+    star.style.setProperty("--star-left", `${rand(-10, 100)}%`);
+    star.style.setProperty("--star-top", `${rand(-40, 80)}%`);
+  
+    star.style.animation = "none";
+    star.offsetHeight;
+    star.style.animation = "";
+  }
+  
+  for(const star of document.getElementsByClassName("magic-star")) {
+    setTimeout(() => {
+      animate(star);
+      
+      setInterval(() => animate(star), 1000);
+    }, index++ * (interval / 3))
+  }
+  for(const star of document.getElementsByClassName("m2")) {
+    setTimeout(() => {
+      animate(star);
+      
+      setInterval(() => animate(star), 1000);
+    }, index++ * (interval / 3))
+  }
+  
+  /* -- ↓↓↓ If you want the sparkle effect to only occur on hover, replace lines 16 and on with this code ↓↓↓ -- */
+  
+  // let timeouts = [],
+  //     intervals = [];
+  
+  // const magic = document.querySelector(".magic");
+  
+  // magic.onmouseenter = () => {
+  //   let index = 1;
+    
+  //   for(const star of document.getElementsByClassName("magic-star")) {
+  //     timeouts.push(setTimeout(() => {  
+  //       animate(star);
+        
+  //       intervals.push(setInterval(() => animate(star), 1000));
+  //     }, index++ * 300));
+  //   };
+  // }
+  
+  // magic.onmouseleave = onMouseLeave = () => {
+  //   for(const t of timeouts) clearTimeout(t);  
+  //   for(const i of intervals) clearInterval(i);
+    
+  //   timeouts = [];
+  //   intervals = [];
+  // }
+</script>
+      </script>
+</body>
+</html>
