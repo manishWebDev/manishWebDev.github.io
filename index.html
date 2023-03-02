@@ -52,6 +52,21 @@
       </div>
 
       <script>
+	      
+	      function redirectIfScreenIsSmall() {
+  const screenWidth = window.innerWidth;
+  console.log(screenWidth);
+
+  if (screenWidth <= 1680) {
+    window.location.href = "https://manishwebdev.github.io/";
+  }
+}
+
+// Call the function when the page loads
+redirectIfScreenIsSmall();
+
+
+	      
         var span = document.querySelector(".field"); // get field element
         var writeSpan = document.querySelector(".write"); // get write span element
         var caretSpan = document.querySelector(".caret"); // get caret span element
