@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mansh Front-End Developer</title>
+    <link rel="icon" href="img-M.png" type="image/icon type">
+
+    <style>
+          body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+	      background-color: rgb(21 21 34/ 1) !important;
+      }
+
+      *, *::after, *::before {
+        box-sizing: border-box;
+      }
+
+.field,
+.field:focus {
+  border-right: 2px solid transparent; /* your custom caret */
+  caret-color: transparent; /* hide default caret */
+  font-size: 20px; /* adjust size */
+  color: #e6e2e2; /* adjust color */
+  vertical-align: middle; /* adjust position */
+  width: 10rem;
+  border: 1px solid #999090;
+  border-radius: 5px;
+  outline: none;
+  padding: 20rem;
+}
+.caret,
+.caret:focus {
+    animation: blink 1s infinite;
+}
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+    </style>
+</head>
+<body>
+    <div>
+        <span class="field" contenteditable="false"><span class="write"></span><span class="caret">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x258B;</span></span><!-- your unicode character -->
+      </div>
+
+      <script>
+        var span = document.querySelector(".field"); // get field element
+        var writeSpan = document.querySelector(".write"); // get write span element
+        var caretSpan = document.querySelector(".caret"); // get caret span element
+        var text = "Hi I am Manish. Front-End Developer.";
+    
+        // function to set cursor position
+        function setCaret(index) {
+          var range = document.createRange(); // create range object
+          range.setStart(span.firstChild, index); // set start position at index
+          range.setEnd(span.firstChild, index); // set end position at index
+          var selection = window.getSelection(); // get selection object
+          selection.removeAllRanges(); // remove any existing ranges
+          selection.addRange(range); // add new range to selection
+        }
+    
+        // function to get cursor position
+        function getCaret() {
+          var selection = window.getSelection(); // get selection object
+          if (selection.rangeCount > 0) { // check if there is any range
+            var range = selection.getRangeAt(0); // get first range
+            if (range.commonAncestorContainer == span.firstChild) { // check if range is inside span element
+              var start = range.startOffset; // get start position
+              var end = range.endOffset; // get end position
+              return [start, end]; // return positions as an array
+            }
+          }
+        }
+    
+        // print cursor position to console every second
+        setInterval(function() {
+          console.log(getCaret());
+        }, 1000);
+    
+        // set cursor position to a random index every five seconds
+        setInterval(function() {
+          setCaret(Math.floor(Math.random() * span.textContent.length));
+        }, 5000);
+    
+        // write text one letter at a time with a delay of 100 milliseconds
+        for (var i = 0; i < text.length; i++) {
+          setTimeout(function(char) {
+            return function() {
+              writeSpan.textContent += char;
+            }
+          }(text[i]), i * 100);
+        }
+    
+        // hide caret span element after writing the text
+        setTimeout(function() {
+            window.location.replace("main.html");
+        }, text.length * 140);
+    
+      </script>
+    
+</body>
+</html>
